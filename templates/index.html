@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🎬 Movie Recommender</h1>
+        <div class="top-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/chat">Chatbox</a></li>
+                <li><a href="/admin">Admin</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <h2>Top Picks</h2>
+        <div class="movie-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <img src="{{ movie[5] }}" alt="{{ movie[1] }}">
+                <h3>{{ movie[1] }}</h3>
+                <p>{{ movie[2] }} | {{ movie[3] }}</p>
+                <p>⭐ {{ movie[4] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Movie Recommender. All rights reserved.</p>
+    </footer>
+</body>
+</html>

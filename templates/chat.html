@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("userInput").value;
+            const response = await fetch("/get-recommendations", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({message: userInput})
+            });
+            const data = await response.json();
+            document.getElementById("response").innerHTML = `
+                <div class="user-message">${userInput}</div>
+                <div class="model-message">${data.reply}</div>
+            `;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>🎬 AI Movie Chat</h1>
+        <div class="top-menu">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/chat">Chatbox</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="question-input">
+            <input type="text" id="userInput" placeholder="e.g. Recommend comedy movies after 2022...">
+            <button onclick="sendMessage()">Ask AI</button>
+        </div>
+        <div id="response" class="answer-output"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Movie Recommender</p>
+    </footer>
+</body>
+</html>
