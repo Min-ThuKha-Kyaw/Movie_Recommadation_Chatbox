@@ -58,7 +58,7 @@ A Flask-based web application that allows users to receive intelligent movie rec
 ##  How to Run
 
 1. Clone this repository  
-2. Install Flask:## 📁 Project Structure
+2. Install Flask:##  Project Structure
 3. Set your OpenAI key inside `app.py`:
 ```python
 openai.api_key = "your-api-key"
